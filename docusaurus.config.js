@@ -9,7 +9,7 @@ const config = {
   title: 'RChain docs',
   tagline: 'RChain general documentations : dev | validation | staking',
   url: 'https://docs.rchain.coop',
-  baseUrl: '/',
+  baseUrl: process.env.BASE_URL ?? '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.png',

@@ -18,7 +18,12 @@ jobs:
 
     - name: Install dependencies
       run: npm ci
+
     - name: Build website
+      env:
+        # Optional base url set in repo secrets e.g. /rchain-docs/
+        # Workaround for https://github.com/facebook/docusaurus/issues/448
+        BASE_URL: ${{ secrets.BASE_URL }}
       run: npm run build
 
     - name: Deploy to GitHub Pages
