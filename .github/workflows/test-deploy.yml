@@ -4,6 +4,9 @@ on:
   pull_request:
     branches:
     - master
+  push:
+    branches:
+    - trying
 
 jobs:
   test-deploy:
@@ -21,3 +24,14 @@ jobs:
 
     - name: Test build website
       run: npm run build
+
+  # Job to notify bors when run is successful. Skipped and cancelled job is considered
+  # as failure. More info https://github.com/bors-ng/bors-ng/issues/1115.
+  bors_success:
+    name: bors build finished
+    needs:
+    - test-deploy
+    if: "github.event_name == 'push' && (github.ref == 'refs/heads/trying' || github.ref == 'refs/heads/staging') && success()"
+    runs-on: ubuntu-latest
+    steps:
+    - run: true
