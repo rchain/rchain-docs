@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkrchain_docs=self.webpackChunkrchain_docs||[]).push([[195],{2841:(e,c,n)=>{n.r(c),n.d(c,{default:()=>r});var t=n(7294),s=n(6775),a=n(2263),o=n(4996);function r(){const e=(0,a.Z)().siteConfig.themeConfig.navbar.items[0],c=(0,o.Z)("docs/"+e.docId);return t.createElement(s.l_,{to:c})}}}]);
