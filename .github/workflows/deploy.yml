@@ -4,6 +4,7 @@ on:
   push:
     branches:
     - master
+    - staging
 
 jobs:
   deploy:
@@ -31,3 +32,14 @@ jobs:
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./build
+
+  # Job to notify bors when run is successful. Skipped and cancelled job is considered
+  # as failure. More info https://github.com/bors-ng/bors-ng/issues/1115.
+  bors_success:
+    name: bors build finished
+    needs:
+    - deploy
+    if: "github.event_name == 'push' && (github.ref == 'refs/heads/trying' || github.ref == 'refs/heads/staging') && success()"
+    runs-on: ubuntu-latest
+    steps:
+    - run: true
