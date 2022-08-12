@@ -7,6 +7,7 @@ on:
   push:
     branches:
     - trying
+    - staging
 
 jobs:
   test-deploy:
